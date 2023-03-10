@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+      table, th, td {
+  border:1px solid black;
+}
+</style>
+    </style>
+  </head>
+  <body>
+    <h1>Home Page</h1>
+    <form method="POST">
+      {% csrf_token %}
+    Blood Group:
+    <select name="bloodGroup">
+      <option value="b_positive">B+</option>
+      <option value="b_negative">B-</option>
+    </select>
+    <input type="submit" value="Submit" />
+    </form>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Blood Group</th>
+      </tr>
+      {% for user in users %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.gender }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.bloodGroup }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
